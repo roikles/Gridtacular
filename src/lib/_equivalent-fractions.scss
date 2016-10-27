@@ -1,0 +1,19 @@
+////
+// Equivalent Fractions
+//
+// This function will add additional classes
+// to make the grid system more expressive.
+// Instead of writing 4/12 you can also write 1/3
+////
+
+@function equivalent-fractions($numerator,$denominator){
+    $fractions: ();
+    @for $i from -$numerator through -1{
+        @if($numerator % abs($i) == 0 and $denominator % abs($i) == 0){
+            $fraction: (abs($i): #{$numerator/abs($i)}-#{$denominator/abs($i)});
+            $fractions: map-merge($fractions, $fraction);
+        }     
+    }
+    // return map of all fractions
+    @return $fractions;
+}

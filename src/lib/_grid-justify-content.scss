@@ -1,0 +1,27 @@
+////
+// Control justification of the items
+// depends on rtl/ltr settings
+////
+
+@mixin grid-justify-content($grid_prefix,$suffix: null){
+    
+    #{$grid_prefix}--align-start#{$suffix}{
+        justify-content: flex-start;
+    }
+
+    #{$grid_prefix}--align-end#{$suffix}{
+        justify-content: flex-end;
+    }
+
+    #{$grid_prefix}--align-center#{$suffix}{
+        justify-content: center;
+    }
+
+    #{$grid_prefix}--align-space-between#{$suffix}{
+        justify-content: space-between;
+    }
+
+    #{$grid_prefix}--align-space-around#{$suffix}{
+        justify-content: space-around;
+    }
+}

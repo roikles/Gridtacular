@@ -1,0 +1,26 @@
+////
+// Control vertical centering from the 'grid' element
+////
+@mixin grid-vertical-align($grid_prefix,$suffix: null){
+    
+    #{$grid_prefix}--v-top#{$suffix}{
+        align-items: flex-start;
+    }
+
+    #{$grid_prefix}--v-center#{$suffix}{
+        align-items: center;
+    }
+
+    #{$grid_prefix}--v-bottom#{$suffix}{
+        align-items: flex-end;
+    }
+
+    #{$grid_prefix}--v-stretch#{$suffix}{
+        align-items: stretch;
+    }
+
+    #{$grid_prefix}--v-baseline#{$suffix}{
+        align-items: stretch;
+    }
+    
+}

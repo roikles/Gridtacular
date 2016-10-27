@@ -1,0 +1,17 @@
+////
+// Item Width
+// 
+// Works out the percent width of items (gutters can be 
+// any unit but items are always percent bases)
+// 
+// @arg {int} $list - provide a Sass map to be traversed
+// @arg {int} $keys... - provide the array keys per depth comma seperated
+// 
+// @example scss - Map Get Z
+//     map-get-z(map, first-child-key, second-child-key);
+////
+
+@function item-width($number_of_items,$total_items) {
+    $single_item_width: 100 / $total_items * 1%;
+    @return $single_item_width * $number_of_items;
+}

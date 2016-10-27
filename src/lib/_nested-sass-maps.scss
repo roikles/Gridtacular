@@ -1,0 +1,39 @@
+////
+// Map Get Z
+//
+// A cleaner way to deal with nested map values.
+// Created by lunelson [https://github.com/lunelson/sass-list-maps]
+//
+// @arg {map} $list - provide a Sass map to be traversed
+// @arg {array} $keys... - provide the array keys per depth comma seperated
+// 
+// @example scss - Map Get Z
+//     map-get-z(map, first-child-key, second-child-key);
+////
+
+@function map-get-z($list, $keys...) {
+    @if $list == null { 
+        @return $list; 
+    }
+    
+    $length: length($keys);
+    
+    $list: map-get($list, nth($keys, 1));
+    
+    @if $length > 1 {
+        
+        @for $n from 2 through $length {
+        
+            @if $list == null { 
+                @return $list; 
+            }
+        
+            $list: map-get($list, nth($keys, $n));
+        
+        }
+        
+        @return $list;
+    }
+
+    @return $list;
+}

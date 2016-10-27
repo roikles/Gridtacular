@@ -1,0 +1,153 @@
+////
+// Generate
+//
+// Pulls the whole thing together ready for output
+// kept seperate from grid-generate as it is DRYer 
+// this way.
+////
+@mixin grid-generate($grid_args){
+     
+    // Set variable defaults
+
+    $grid_name:             "grid";
+    $grid_prefix:           #{'.' + $grid_name};
+    $item_name:             "span--";
+    $push:                  false;
+    $push_name:             "push--";
+    $omega:                 true;
+    $debug_display:         false;
+    $class_debug_display:   false;
+    
+    // Check if the user has submitted defaults
+    // If they have then use the user submitted values
+    // otherwise fall back to the defined defaults
+
+    // If grid class has been defined
+    @if ( map-has-key(map-get($grid_args, config), gridclass) ) {
+        $grid_name: map-get-z($grid_args, config, gridclass);
+        $grid_prefix: #{'.' + map-get-z($grid_args, config, gridclass)};
+    }
+
+    // If item class has been defined
+    @if ( map-has-key(map-get($grid_args, config), itemclass) ) {
+        $item_name: map-get-z($grid_args, config, itemclass)
+    }
+
+    //If push has been defined
+    @if (map-has-key(map-get($grid_args, config), push)) {
+        $push: map-get-z($grid_args, config, push)
+    }
+
+    // If pushclass has been defined    
+    @if (map-has-key(map-get($grid_args, config), pushclass)) {
+        $push_name: map-get-z($grid_args, config, pushclass);
+    }
+
+    // If omega has been defined
+    @if (map-has-key(map-get($grid_args, config), omega)) {
+        $omega: map-get-z($grid_args, config, omega);
+    }
+
+    // If debug_display has been defined    
+    @if (map-has-key(map-get($grid_args, config), debug)) {
+        $debug_display: map-get-z($grid_args, config, debug);
+    }
+
+    // If debug_display has been defined
+    @if (map-has-key(map-get($grid_args, config), classdebug)) {
+        $class_debug_display: map-get-z($grid_args, config, classdebug);
+    }
+
+    // if grid include breakpoint debug box
+    @if variable-exists(debug_display){
+        @include grid-debug();
+    } 
+
+    // Check that there are defined grids
+    @if( map-has-key($grid_args, grids )) {
+        
+        // Grid default values
+        $grids: map-get($grid_args, grids);
+        $item_prefix: #{'.' + $item_name};
+        $push_prefix: #{'.' + $push_name};
+        
+        @each $grid_name, $grid_map in $grids{
+
+            // Set defaults
+
+            $items:             12;
+            $suffix:            null;
+            $breakpoint_min:    null;
+            $breakpoint_max:    null;
+            $gutter:            24px;
+            $debug_bg:          #000;
+            $debug_name:        $grid_name;
+
+            // If item class has been defined
+            @if ( map-has-key($grid_map, items) ) {
+                $items: map-get($grid_map,items);
+            }
+
+            // If item class has been defined
+            @if ( map-has-key($grid_map, suffix) ) {
+                $suffix: map-get($grid_map,suffix)
+            }
+
+            // If breakpoint min has been defined
+            @if ( map-has-key($grid_map, breakpoint_min) ) {
+                $breakpoint_min: map-get($grid_map,breakpoint_min);
+            }
+
+            // If breakpoint max has been defined
+            @if ( map-has-key($grid_map, breakpoint_max) ) {
+                $breakpoint_max: map-get($grid_map,breakpoint_max);
+            }
+
+            // If gutter has been defined
+            @if ( map-has-key($grid_map, gutter) ) {
+                $gutter:  map-get($grid_map,gutter);
+            }
+
+            // If debug_bg is defined
+            @if ( map-has-key($grid_map, debug_bg) ) {
+                $debug_bg:  map-get($grid_map,debug_bg);
+            }
+
+            // If debug_name is defined
+            @if ( map-has-key($grid_map, debug_name) ) {
+                $debug_name:  map-get($grid_map,debug_name);
+            }
+
+            // Include the necessary mixins to generate the grids
+            @include at-breakpoint($breakpoint_min, $breakpoint_max){
+                
+                @include grid($grid_prefix,$gutter);
+                @include grid-no-gutter($grid_prefix,$suffix);
+                @include grid-vertical-align($grid_prefix,$suffix);
+                @include grid-justify-content($grid_prefix,$suffix);
+                @include grid-item-fit($item_prefix,$suffix);
+                @include grid-item-flex($item_prefix,$suffix);
+                @include grid-items($item_prefix,$suffix,$items);
+                
+                @if($push){
+                    @include grid-push($push_prefix, $suffix, $items);
+                }
+                
+                @if($omega){
+                    @include grid-omega($item_prefix, $suffix);
+                }
+
+                @if($debug_display){ 
+                    @include grid-debug-responsive($debug_name,$debug_bg);
+                } 
+
+                @if($class_debug_display){ 
+                    @include class-debug($grid_prefix); 
+                }
+            }
+        }
+
+    } @else{
+        @error "No Gridtacular grids defined!";
+    }
+}

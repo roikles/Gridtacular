@@ -1,0 +1,22 @@
+////
+// Item Push Class
+//
+// Set the push classes that will incrementally indent
+// the item by a maximum number of total-items -1
+////
+
+@mixin grid-push($prefix: null, $suffix: null, $items: null){
+    @for $i from 1 through $items - 1{
+        $css_classes: equivalent-fractions($i,$items);
+        $push_class: null;
+        
+        @each $key, $css_class in $css_classes{
+            $full_css_class: #{$prefix}#{$css_class}#{$suffix};
+            $push_class: $push_class, $full_css_class;
+        }
+        
+        #{$push_class}{
+            margin-left: item-width($i,$items);
+        }
+    }
+}

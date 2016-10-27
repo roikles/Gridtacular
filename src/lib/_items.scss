@@ -1,0 +1,31 @@
+////
+// Grid Items
+// 
+// Set the grid item widths based on the number of 
+// items divided by the total number of items.
+////
+@mixin grid-items($prefix: null, $suffix: null, $items: null){
+    
+    // Loop through the total grid items
+    
+    @for $i from 1 through $items{
+        $css_classes: equivalent-fractions($i,$items);
+        $item_class: null;
+        
+        // Generate classes from Equivilant fractions
+
+        @each $key, $css_class in $css_classes{
+            $full_css_class: #{$prefix}#{$css-class}#{$suffix};
+            $item_class: $item_class, $full_css_class;
+        }
+        
+        // Output item classes
+
+        #{$item_class}{
+            //width: item-width($i,$items);
+            flex-basis: item-width($i,$items);
+            max-width: item-width($i,$items);
+        }
+    }
+
+}

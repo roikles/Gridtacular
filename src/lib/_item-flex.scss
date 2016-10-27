@@ -1,0 +1,15 @@
+////
+// Grid Item Flex
+//
+// Apply display: flex to grid items
+// could allow for nesting but also allows content
+// to span 100% of its containers height which is
+// useful when using the stretch behavior on
+// siblings
+////
+
+@mixin grid-item-flex($item_class,$suffix: null){
+    #{$item_class}flex#{$suffix}{
+        display: flex;
+    }
+}

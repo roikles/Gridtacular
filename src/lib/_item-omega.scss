@@ -1,0 +1,13 @@
+////
+// Omega class
+//
+// An omega declaration that is breakpoint specific
+// Basically it floats an element to the right taking
+// it out of order potentially.
+////
+
+@mixin grid-omega($prefix: null, $suffix: null){
+    #{$prefix}omega#{$suffix} {
+        margin-left: auto;
+    }
+}

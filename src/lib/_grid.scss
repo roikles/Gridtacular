@@ -1,0 +1,28 @@
+////
+// Grid
+//
+// Called once per breakpoint as the gutters may be different
+// Float all direct children of the grid.
+// Adds negative padding to each row
+// Display flex and flex-wrap are used here to prevent content from 
+// floating into above elements
+////
+
+@mixin grid($grid_prefix,$gutter){
+
+    #{$grid_prefix}{
+        box-sizing: border-box;
+        display: flex;
+        margin-left: -$gutter;
+        flex-direction: row;
+        flex: 0 1 auto;
+        flex-wrap: wrap;
+    }
+
+    // Target children of Grid
+    #{$grid_prefix} > * {
+        box-sizing: border-box;
+        padding-left: $gutter;
+        position: relative;
+    }
+}

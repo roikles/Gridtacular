@@ -1,0 +1,12 @@
+////
+// Span Columns
+// 
+// Used to set grids semantically from within 
+// the stylesheet with no additional HTML markup
+////
+
+@mixin span-items($items, $total_items){
+    //width: item-width($items,$total_items);
+    flex-basis: item-width($items,$total_items);
+    padding-left: $gutter-width; 
+}

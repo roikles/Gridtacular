@@ -1,0 +1,18 @@
+////
+// Grid with no gutters bestween grid items
+// 
+// this works on a per-breakpoint basis
+// therefore you Must declare no-gutter 
+// for each breakpoint you wish to have no gutter.
+////
+
+@mixin grid-no-gutter($grid_prefix,$suffix: null){
+    #{$grid_prefix}--no-gutter#{$suffix}{
+        margin-left: 0;
+    }
+
+    // Float children
+    #{$grid_prefix}--no-gutter#{$suffix} > * {
+        padding-left: 0;
+    }
+}

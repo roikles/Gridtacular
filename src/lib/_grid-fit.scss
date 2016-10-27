@@ -1,0 +1,10 @@
+////
+// Grid fit
+//
+// Make items fill a row
+////
+@mixin grid-item-fit($item_class,$suffix: null){
+    #{$item_class}fit#{$suffix}{
+        flex: 1 0;
+    }
+}

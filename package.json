@@ -1,0 +1,23 @@
+{
+  "name": "FlexbonesBuild",
+  "version": "5.0.0",
+  "description": "Watch sass,js and deploy",
+  "author": "Rory Ashford <rory@roikles.com>",
+  "config": {
+    "sass": "app/themes/flexbones/assets/sass/style.scss",
+    "sassfolder": "app/themes/flexbones/assets/sass",
+    "css": "app/themes/flexbones/style.css",
+    "watch": "app/themes/flexbones/",
+    "watchproxy": "localhost/flexbones"
+  },
+  "scripts": {
+    "sass": "node-sass demo/style.scss demo/style.css --output-style expanded",
+    "watch:sass": "fsmonitor -d ./ -q '+*.scss' npm run -s sass",
+    "browsersync": "browser-sync start --files 'demo/*, !demo/**/*.scss, !.git/*, ./**/*' --no-open --proxy localhost/gridtacular",
+    "watch": "npm run -s browsersync & npm run -s watch:sass"
+  },
+  "devDependencies": {
+    "fsmonitor": "^0.2.4",
+    "node-sass": "^3.4.2"
+  }
+}

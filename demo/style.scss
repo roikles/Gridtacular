@@ -1,0 +1,37 @@
+// Grid setup
+
+$grid_args:(
+    config: (
+        gridclass:           'g',
+        itemclass:           'gi--',
+        pushclass:           'p--',
+        debug:               true,
+    ),
+    grids: (
+        small: (
+            columns:         12,
+            suffix:          null,
+            gutter:          24px,
+            debug_name:      'Small',
+            debug_bg:        #DABB3A,
+        ),
+        medium: (
+            columns:        12,
+            suffix:         '--m',
+            breakpoint_min: 800px,
+            breakpoint_max: null,
+            gutter:         24px,
+            debug_name:     'Medium',
+            debug_bg:       #1EA061,
+        ),
+        large: (
+            columns:        12,
+            suffix:         '--l',
+            breakpoint_min: 1100px,
+            breakpoint_max: null,
+            gutter:         24px,
+            debug_name:     'Large',
+            debug_bg:       #13a2f7,
+        )
+    )
+);
