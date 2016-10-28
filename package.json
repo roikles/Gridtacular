@@ -1,15 +1,15 @@
 {
-  "name": "FlexbonesBuild",
-  "version": "5.0.0",
-  "description": "Watch sass,js and deploy",
+  "name": "Gridtacular",
+  "version": "2.0.1",
+  "description": "Flexbox grid system",
   "author": "Rory Ashford <rory@roikles.com>",
-  "config": {
-    "sass": "app/themes/flexbones/assets/sass/style.scss",
-    "sassfolder": "app/themes/flexbones/assets/sass",
-    "css": "app/themes/flexbones/style.css",
-    "watch": "app/themes/flexbones/",
-    "watchproxy": "localhost/flexbones"
+  "repository": {
+    "url": "https://github.com/roikles/Gritacular2",
+    "type": "git"
   },
+  "keywords": ["grid", "system", "flexbox"],
+  "homepage": "https://github.com/roikles/Gritacular2",
+  "bugs": "https://github.com/roikles/Gritacular2/issues",
   "scripts": {
     "sass": "node-sass demo/style.scss demo/style.css --output-style expanded",
     "watch:sass": "fsmonitor -d ./ -q '+*.scss' npm run -s sass",
@@ -19,5 +19,11 @@
   "devDependencies": {
     "fsmonitor": "^0.2.4",
     "node-sass": "^3.4.2"
-  }
+  },
+  "files": [
+    "src/**/*.scss",
+    "package.json"
+  ],
+  "main": "src/_gridtacular.scss",
+  "license": "MIT"
 }
