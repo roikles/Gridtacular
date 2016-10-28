@@ -1,13 +1,17 @@
 {
   "name": "Gridtacular",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Flexbox grid system",
   "author": "Rory Ashford <rory@roikles.com>",
   "repository": {
     "url": "https://github.com/roikles/Gritacular2",
     "type": "git"
   },
-  "keywords": ["grid", "system", "flexbox"],
+  "keywords": [
+    "grid",
+    "system",
+    "flexbox"
+  ],
   "homepage": "https://github.com/roikles/Gritacular2",
   "bugs": "https://github.com/roikles/Gritacular2/issues",
   "scripts": {
@@ -20,10 +24,6 @@
     "fsmonitor": "^0.2.4",
     "node-sass": "^3.4.2"
   },
-  "files": [
-    "src/**/*.scss",
-    "package.json"
-  ],
   "main": "src/_gridtacular.scss",
   "license": "MIT"
 }
