@@ -133,9 +133,9 @@
                     @include grid-push($push_prefix, $suffix, $items);
                 }
                 
-                @if($omega){
+                /*@if($omega){
                     @include grid-omega($item_prefix, $suffix);
-                }
+                }*/
 
                 @if($debug_display){ 
                     @include grid-debug-responsive($debug_name,$debug_bg);

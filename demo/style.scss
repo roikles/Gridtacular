@@ -1,5 +1,7 @@
 // Grid setup
 
+@import 'src/_gridtacular';
+
 $grid_args:(
     config: (
         gridclass:           'g',
@@ -35,3 +37,5 @@ $grid_args:(
         )
     )
 );
+
+@include grid_generate($grid_args);
