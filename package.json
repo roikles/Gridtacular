@@ -1,6 +1,6 @@
 {
   "name": "Gridtacular",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "Flexbox grid system",
   "author": "Rory Ashford <rory@roikles.com>",
   "repository": {
@@ -15,9 +15,9 @@
   "homepage": "https://github.com/roikles/Gritacular2",
   "bugs": "https://github.com/roikles/Gritacular2/issues",
   "scripts": {
-    "sass": "node-sass demo/style.scss demo/style.css --output-style expanded",
+    "sass": "node-sass docs/style.scss docs/style.css --output-style expanded",
     "watch:sass": "fsmonitor -d ./ -q '+*.scss' npm run -s sass",
-    "browsersync": "browser-sync start --files 'demo/*, !demo/**/*.scss, !.git/*, ./**/*' --no-open --proxy localhost/gridtacular",
+    "browsersync": "browser-sync start --files 'docs/*, !docs/**/*.scss, !.git/*, ./**/*' --no-open --proxy localhost/gridtacular",
     "watch": "npm run -s browsersync & npm run -s watch:sass"
   },
   "devDependencies": {
